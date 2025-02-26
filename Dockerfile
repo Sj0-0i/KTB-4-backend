@@ -4,11 +4,11 @@ WORKDIR /app
 COPY gradle gradle
 COPY build.gradle settings.gradle gradlew ./
 
-RUN ./gradlew dependencies
+RUN ./gradlew dependencies --no-daemon
 
 COPY . .
 
-RUN ./gradlew clean build -x test
+RUN ./gradlew clean build -x test --no-daemon
 
 FROM eclipse-temurin:21-jre AS runtime
 
